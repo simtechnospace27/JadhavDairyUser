@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Jadhav Dairy</string>
+    <string name="new_register"><u>New Member? Sign up now.</u></string>
+
+
+    <string name="quantity">Volume</string>
+
+    <string-array name="quantity_arrays">
+        <item>ml</item>
+        <item>ltr</item>
+    </string-array>
+
 </resources>
