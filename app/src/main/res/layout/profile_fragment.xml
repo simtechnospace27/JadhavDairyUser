@@ -125,54 +125,6 @@
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
-
-        <!--    <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:autoSizeMaxTextSize="30dp"
-                android:autoSizeMinTextSize="16dp"
-                android:padding="5dp"
-                android:text="Password"
-                android:textColor="@color/changeTextColor" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:orientation="horizontal">
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/txtUserPasswordRegistration"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:autoSizeMaxTextSize="30dp"
-                    android:autoSizeMinTextSize="16dp"
-                    android:textColorHint="@color/changeTextColor"
-                    app:errorTextAppearance="@style/error_appearance"
-                    app:hintTextAppearance="@color/changeTextColor">
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/edtUserPasswordRegistration"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:autoSizeMaxTextSize="30dp"
-                        android:autoSizeMinTextSize="16dp"
-                        android:inputType="textPassword"
-                        android:padding="5dp"
-                        android:textColor="@color/changeTextColor"
-                        android:textColorHint="@color/changeTextColor" />
-
-                </android.support.design.widget.TextInputLayout>
-            </LinearLayout>
--->
-
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -339,8 +291,98 @@
 
             </LinearLayout>
 
-           <!-- <Button
-                android:id="@+id/btnSignUp"
+                <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="10dp"
+               android:layout_marginTop="10dp"
+               android:layout_marginRight="10dp"
+               android:autoSizeMaxTextSize="30dp"
+               android:autoSizeMinTextSize="16dp"
+               android:padding="5dp"
+               android:text="Old Password"
+               android:textColor="@color/changeTextColor" />
+
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="20dp"
+               android:orientation="horizontal">
+
+               <android.support.design.widget.TextInputLayout
+                   android:id="@+id/txtUserOldPassword"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginRight="10dp"
+                   android:autoSizeMaxTextSize="30dp"
+                   android:autoSizeMinTextSize="16dp"
+                   android:textColorHint="@color/changeTextColor"
+                   app:errorTextAppearance="@style/error_appearance"
+                   app:hintTextAppearance="@color/changeTextColor">
+
+                   <android.support.design.widget.TextInputEditText
+                       android:id="@+id/edit_tUserOldPassword"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:autoSizeMaxTextSize="30dp"
+                       android:autoSizeMinTextSize="16dp"
+                       android:inputType="textPassword"
+                       android:padding="5dp"
+                       android:textColor="@color/changeTextColor"
+                       android:textColorHint="@color/changeTextColor" />
+
+               </android.support.design.widget.TextInputLayout>
+           </LinearLayout>
+
+                <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="10dp"
+               android:layout_marginTop="10dp"
+               android:layout_marginRight="10dp"
+               android:autoSizeMaxTextSize="30dp"
+               android:autoSizeMinTextSize="16dp"
+               android:padding="5dp"
+               android:text="New Password"
+               android:textColor="@color/changeTextColor" />
+
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="20dp"
+               android:orientation="horizontal">
+
+               <android.support.design.widget.TextInputLayout
+                   android:id="@+id/txtUserNewPassword"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginRight="10dp"
+                   android:autoSizeMaxTextSize="30dp"
+                   android:autoSizeMinTextSize="16dp"
+                   android:textColorHint="@color/changeTextColor"
+                   app:errorTextAppearance="@style/error_appearance"
+                   app:hintTextAppearance="@color/changeTextColor">
+
+                   <android.support.design.widget.TextInputEditText
+                       android:id="@+id/edit_tUserNewPassword"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:autoSizeMaxTextSize="30dp"
+                       android:autoSizeMinTextSize="16dp"
+                       android:inputType="textPassword"
+                       android:padding="5dp"
+                       android:textColor="@color/changeTextColor"
+                       android:textColorHint="@color/changeTextColor" />
+
+               </android.support.design.widget.TextInputLayout>
+           </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
@@ -350,10 +392,10 @@
                 android:autoSizeMaxTextSize="30dp"
                 android:autoSizeMinTextSize="16dp"
                 android:background="@color/normalButtonColor"
-                android:text="Sign up"
+                android:text="Save"
                 android:textColor="@color/normalTextColor" />
 
-            <com.pnikosis.materialishprogress.ProgressWheel
+           <!-- <com.pnikosis.materialishprogress.ProgressWheel
                 android:id="@+id/progress_wheel"
                 android:layout_width="50dp"
                 android:layout_height="50dp"

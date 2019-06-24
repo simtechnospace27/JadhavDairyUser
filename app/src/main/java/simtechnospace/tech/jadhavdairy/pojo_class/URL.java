@@ -7,5 +7,7 @@ public class URL {
 
     public static String mGetProfileDetailsUrl = "http://thegoviddo.tech/admin/getuserdata.php";
 
+    public static String mUpdateUrl = "http://thegoviddo.tech/admin/updareprofile.php\n";
+
 }
 
