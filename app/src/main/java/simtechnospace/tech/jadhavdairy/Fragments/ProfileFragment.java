@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import simtechnospace.tech.jadhavdairy.R;
@@ -24,7 +25,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.activity_registration, container, false);
+        View view = inflater.inflate(R.layout.profile_fragment, container, false);
 
         mTextInputLayoutUserEmail =view.findViewById(R.id.txtUserNameRegistration);
         mTextInputLayoutUserName = view.findViewById(R.id.txtUserName);
@@ -41,12 +42,33 @@ public class ProfileFragment extends Fragment {
 
         Spinner spin = (Spinner)view.findViewById(R.id.spinner2);
 
+        ArrayAdapter<String> SpinerAdapter;
+        String[] arrayItems = {"Select Unit","Ltr","ml"};
+
+        SpinerAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, arrayItems);
+        spin.setAdapter(SpinerAdapter);
+
+
+        //System.out.println(UserDetails.getCustomerName());
+
         mEdtUserAddress.setText(UserDetails.getUserAddress());
         mEdtUserEmail.setText(UserDetails.getEmailId());
         mEdtUserMobileNo.setText(UserDetails.getMobileNo());
         mEdtUserName.setText(UserDetails.getCustomerName());
         mEdtUserRequirement.setText(UserDetails.getRequirements());
-        spin.setPrompt(UserDetails.getUnit());
+        //spin.setPrompt(UserDetails.getUnit());
+
+        if(UserDetails.getUnit().equalsIgnoreCase("Ltr")) {
+            spin.setSelection(1);
+        }
+        else if(UserDetails.getUnit().equalsIgnoreCase("ml")) {
+            spin.setSelection(2);
+        }
+        else{
+            spin.setSelection(0);
+        }
+
+
         return view;
     };
 
