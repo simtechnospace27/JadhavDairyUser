@@ -2,7 +2,7 @@ package simtechnospace.tech.jadhavdairy.pojo_class;
 
 public class UserDetails {
 
-    String mUserAddress, mRequirements, mUnit, mDeliveryBoy, mApprovalStatus, mCustomerName, mMobileNo, mEmailId, mUserJoinDate;
+  public static String mUserAddress, mRequirements, mUnit, mDeliveryBoy, mApprovalStatus, mCustomerName, mMobileNo, mEmailId, mUserJoinDate;
 
     public UserDetails(String userAddress, String requirements, String unit, String deliveryBoy, String approvalStatus, String customerName, String mobileNo, String emailId, String userJoinDate) {
         this.mUserAddress = userAddress;
@@ -21,7 +21,7 @@ public class UserDetails {
     }
 
 
-    public String getUserAddress() {
+    public static String getUserAddress() {
         return mUserAddress;
     }
 
@@ -29,7 +29,7 @@ public class UserDetails {
         this.mUserAddress = userAddress;
     }
 
-    public String getRequirements() {
+    public static String getRequirements() {
         return mRequirements;
     }
 
@@ -37,7 +37,7 @@ public class UserDetails {
         this.mRequirements = requirements;
     }
 
-    public String getUnit() {
+    public static String getUnit() {
         return mUnit;
     }
 
@@ -45,7 +45,7 @@ public class UserDetails {
         this.mUnit = unit;
     }
 
-    public String getDeliveryBoy() {
+    public static String getDeliveryBoy() {
         return mDeliveryBoy;
     }
 
@@ -53,7 +53,7 @@ public class UserDetails {
         this.mDeliveryBoy = deliveryBoy;
     }
 
-    public String getApprovalStatus() {
+    public static String getApprovalStatus() {
         return mApprovalStatus;
     }
 
@@ -61,7 +61,7 @@ public class UserDetails {
         this.mApprovalStatus = approvalStatus;
     }
 
-    public String getCustomerName() {
+    public static String getCustomerName() {
         return mCustomerName;
     }
 
@@ -69,7 +69,7 @@ public class UserDetails {
         this.mCustomerName = customerName;
     }
 
-    public String getMobileNo() {
+    public static String getMobileNo() {
         return mMobileNo;
     }
 
@@ -77,7 +77,7 @@ public class UserDetails {
         this.mMobileNo = mobileNo;
     }
 
-    public String getEmailId() {
+    public static String getEmailId() {
         return mEmailId;
     }
 
@@ -85,7 +85,7 @@ public class UserDetails {
         this.mEmailId = emailId;
     }
 
-    public String getUserJoinDate() {
+    public static String getUserJoinDate() {
         return mUserJoinDate;
     }
 
