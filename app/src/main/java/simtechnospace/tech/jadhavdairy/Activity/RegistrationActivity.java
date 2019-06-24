@@ -37,7 +37,7 @@ public class RegistrationActivity extends AppCompatActivity {
     android.support.design.widget.TextInputLayout mTextInputLayoutUserName, mTextInputLayoutUnit, mTextInputLayoutUserPassword,mTextInputLayoutUserEmail, mTextInputLayoutUserAddress, mTextInputLayoutUserMobileNo,mTextInputLayoutRequirement;
     android.support.design.widget.TextInputEditText mEdtUserName, mEdtUserPassword,mEdtUserEmail, mEdtUserAddress, mEdtUserRequirement, mEdtUserMobileNo;
     Button mBtnSignup;
-    String mUserName, mPassword,Url,mUserAddress,mUserEmail,mUserMobileNo, mUnit;
+    String mUserName, mPassword,mUserAddress,mUserEmail,mUserMobileNo, mUnit;
     Double mUserRequirement;
     Vibrator mVibrator;
 
