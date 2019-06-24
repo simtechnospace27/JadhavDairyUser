@@ -60,6 +60,9 @@ public class ProfileFragment extends Fragment {
         mTextInputLayoutNewPassword = view.findViewById(R.id.txtUserNewPassword);
 
         mEdtUserEmail = view.findViewById(R.id.edit_tUserNameRegistration);
+
+
+
         mEdtUserName = view.findViewById(R.id.edit_tUserName);
         mEdtUserAddress = view.findViewById(R.id.edit_tUserAddress);
         mEdtUserMobileNo = view.findViewById(R.id.edit_tUserMobileNo);
@@ -81,6 +84,9 @@ public class ProfileFragment extends Fragment {
 
         mEdtUserAddress.setText(UserDetails.getUserAddress());
         mEdtUserEmail.setText(UserDetails.getEmailId());
+
+        mEdtUserEmail.setEnabled(false);
+
         mEdtUserMobileNo.setText(UserDetails.getMobileNo());
         mEdtUserName.setText(UserDetails.getCustomerName());
         mEdtUserRequirement.setText(UserDetails.getRequirements());
@@ -107,14 +113,20 @@ public class ProfileFragment extends Fragment {
                 JSONObject params = new JSONObject();
                 try {
 
-                    params.put("userName", mEdtUserName);
-                    params.put("mobile", mEdtUserMobileNo);
-                    params.put("address", mEdtUserAddress);
-                    params.put("requirement",mEdtUserRequirement);
+                    String userName = mEdtUserName.getText().toString();
+
+                    System.out.println(userName);
+
+                    params.put("userName",  userName);
+                    params.put("mobile", mEdtUserMobileNo.getText().toString());
+                    params.put("address", mEdtUserAddress.getText().toString());
+                    params.put("requirement",mEdtUserRequirement.getText().toString());
                     params.put("unit", mUnitChange);
-                    params.put("email", mEdtUserEmail);
-                    params.put("oldpassword", mEdtUserOldPassword);
-                    params.put("newpassword",mTextInputLayoutNewPassword);
+                    params.put("email", mEdtUserEmail.getText().toString());
+                    params.put("oldpassword", mEdtUserOldPassword.getText().toString());
+                    params.put("newpassword",mEdtUserNewPassword.getText().toString());
+
+                    System.out.println(params);
 
 
                 } catch (JSONException e) {
