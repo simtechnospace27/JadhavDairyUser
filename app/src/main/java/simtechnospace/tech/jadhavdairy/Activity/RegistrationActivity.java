@@ -1,30 +1,44 @@
-package simtechnospace.tech.jadhavdairy;
+package simtechnospace.tech.jadhavdairy.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import simtechnospace.tech.jadhavdairy.R;
+import simtechnospace.tech.jadhavdairy.pojo_class.URL;
+
 public class RegistrationActivity extends AppCompatActivity {
-    android.support.design.widget.TextInputLayout mTextInputLayoutUserName, mTextInputLayoutUserPassword,mTextInputLayoutUserEmail, mTextInputLayoutUserAddress, mTextInputLayoutUserMobileNo,mTextInputLayoutRequirement;
+    android.support.design.widget.TextInputLayout mTextInputLayoutUserName, mTextInputLayoutUnit, mTextInputLayoutUserPassword,mTextInputLayoutUserEmail, mTextInputLayoutUserAddress, mTextInputLayoutUserMobileNo,mTextInputLayoutRequirement;
     android.support.design.widget.TextInputEditText mEdtUserName, mEdtUserPassword,mEdtUserEmail, mEdtUserAddress, mEdtUserRequirement, mEdtUserMobileNo;
     Button mBtnSignup;
-    String mUserName, mPassword,Url,mUserAddress,mUserEmail,mUserRequirement,mUserMobileNo;
+    String mUserName, mPassword,Url,mUserAddress,mUserEmail,mUserMobileNo, mUnit;
+    Double mUserRequirement;
     Vibrator mVibrator;
 
     TextView mTextViewNewUserRegistration;
@@ -49,6 +63,7 @@ public class RegistrationActivity extends AppCompatActivity {
         mTextInputLayoutUserAddress = findViewById(R.id.textInputLayoutUserAddress);
         mTextInputLayoutUserMobileNo = findViewById(R.id.textInputLayoutMobileNo);
         mTextInputLayoutRequirement = findViewById(R.id.textInputLayoutRequirement);
+        mTextInputLayoutUnit = findViewById(R.id.textInputLayoutUnit);
 
         mEdtUserEmail = findViewById(R.id.edtUserNameRegistration);
         mEdtUserPassword = findViewById(R.id.edtUserPasswordRegistration);
@@ -61,13 +76,15 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
         spinner1 = (Spinner) findViewById(R.id.spinner1);
-        spinner1.setOnItemClickListener((AdapterView.OnItemClickListener) this);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.quantity_arrays, android.R.layout.simple_spinner_item);
-               // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-               // Apply the adapter to the spinner
-           spinner1.setAdapter(adapter);
+
+        ArrayAdapter<String> SpinerAdapter;
+        String[] arrayItems = {"Select Unit","Ltr","ml"};
+
+        SpinerAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item, arrayItems);
+        spinner1.setAdapter(SpinerAdapter);
+
+
 
 
 
@@ -86,12 +103,27 @@ public class RegistrationActivity extends AppCompatActivity {
                 mUserName = mEdtUserName.getText().toString();
                 mPassword = mEdtUserPassword.getText().toString();
                 mUserAddress = mEdtUserAddress.getText().toString();
-                mUserMobileNo = mEdtUserMobileNo.getText().toString();
+
+                if (!mEdtUserMobileNo.getText().toString().trim().isEmpty()) {
+                    mUserMobileNo = mEdtUserMobileNo.getText().toString();
+                }
+                else{
+                    mUserMobileNo = "0";
+                }
+
+
                 mUserEmail = mEdtUserEmail.getText().toString();
-                mUserRequirement = mEdtUserRequirement.getText().toString();
+                if (!mEdtUserRequirement.getText().toString().isEmpty()) {
+                    mUserRequirement = Double.parseDouble(mEdtUserRequirement.getText().toString());
+                }
+                else{
+                    mUserRequirement = 0.0;
+                }
+                mUnit = spinner1.getSelectedItem().toString();
 
+                Toast.makeText(RegistrationActivity.this, mUnit, Toast.LENGTH_SHORT).show();
 
-                submitForm(mUserEmail,mPassword,mUserName,mUserAddress,mUserMobileNo,mUserRequirement);
+                submitForm(mUserEmail,mPassword,mUserName,mUserAddress,mUserMobileNo,mUserRequirement, mUnit);
             }
 
         });
@@ -106,7 +138,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         if(userName.trim().isEmpty() || (userName.length() <= 1)){
             mTextInputLayoutUserName.setErrorEnabled( true );
-            mTextInputLayoutUserName.setError( "Please Enter Valid First Name" );
+            mTextInputLayoutUserName.setError( "Please Enter Valid Name" );
             return false;
         }
         mTextInputLayoutUserName.setErrorEnabled( false );
@@ -160,11 +192,35 @@ public class RegistrationActivity extends AppCompatActivity {
         return true;
     }
 
+    private boolean checkRequirement(double value)
+    {
+        if(value <= 0)
+        {
+            mTextInputLayoutRequirement.setErrorEnabled(true);
+            mTextInputLayoutRequirement.setError("Please Enter Valid Requirement");
+            return false;
+        }
+        mTextInputLayoutRequirement.setErrorEnabled(false);
+        return true;
+    }
+
+    private boolean checkUnit(String unit)
+    {
+        if(unit.trim().equalsIgnoreCase("Select Unit"))
+        {
+            mTextInputLayoutUnit.setErrorEnabled(true);
+            mTextInputLayoutUnit.setError("Please Select Unit First");
+            return false;
+        }
+        mTextInputLayoutUnit.setErrorEnabled(false);
+        return true;
+    }
+
     private boolean checkMobile(String mobileNo) {
-        if (Integer.getInteger(mobileNo) == 10) {
+        if (mobileNo.length() == 10) {
             mTextInputLayoutUserMobileNo.setErrorEnabled(false);
             return true;
-        } else if (mobileNo.isEmpty() || Integer.getInteger(mobileNo) < 10 ||Integer.getInteger(mobileNo) > 10) {
+        } else if (mobileNo.isEmpty() || mobileNo.length() < 10 || mobileNo.length() > 10) {
             mTextInputLayoutUserMobileNo.setErrorEnabled(true);
             mTextInputLayoutUserMobileNo.setError("Please Enter Valid Mobile No");
             return false;
@@ -173,38 +229,52 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
 
-    public void submitForm(String Email,String password,String username,String Address, String mobileNo, String Requirement) {
+    public void submitForm(String Email,String password,String username,String Address, String mobileNo, double Requirement, String unit) {
 
         if (!checkFirstName(username)) {
             mVibrator.vibrate(1000);
-            return;
-
-        } else if (!checkAddress(Address)) {
-            mVibrator.vibrate(1000);
-            return;
-
-        } else if (!checkMobile(mobileNo)) {
-            mVibrator.vibrate(1000);
+            mEdtUserName.requestFocus();
             return;
 
         } else if (!checkEmail(Email)) {
             mVibrator.vibrate(1000);
+            mEdtUserEmail.requestFocus();
             return;
         } else if (!checkPassword(password)) {
             mVibrator.vibrate(1000);
+            mEdtUserPassword.requestFocus();
             return;
 
-        } else if (!checkRequirement(Requirement,unit)) {
+        }
+        else if (!checkAddress(Address)) {
             mVibrator.vibrate(1000);
+            mEdtUserAddress.requestFocus();
             return;
 
-        } else {
+        } else if (!checkMobile(mobileNo)) {
+            mVibrator.vibrate(1000);
+            mEdtUserMobileNo.requestFocus();
+            return;
+
+        }  else if (!checkRequirement(Requirement)) {
+            mVibrator.vibrate(1000);
+            mEdtUserRequirement.requestFocus();
+            return;
+
+        }else if (!checkUnit(mUnit)) {
+            mVibrator.vibrate(1000);
+            spinner1.requestFocus();
+            return;
+
+        }
+        else {
             mTextInputLayoutUserName.setErrorEnabled(false);
             mTextInputLayoutUserPassword.setErrorEnabled(false);
             mTextInputLayoutUserAddress.setErrorEnabled(false);
             mTextInputLayoutUserEmail.setErrorEnabled(false);
             mTextInputLayoutUserMobileNo.setErrorEnabled(false);
             mTextInputLayoutRequirement.setErrorEnabled(false);
+            mTextInputLayoutUnit.setErrorEnabled(false);
 
             progressDialog.show();
             JSONObject params = new JSONObject();
@@ -214,6 +284,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 params.put("mblno", mobileNo);
                 params.put("address", Address);
                 params.put("requirement",Requirement);
+                params.put("unit", mUnit);
                 params.put("email", Email);
                 params.put("paasword", password);
 
@@ -227,18 +298,66 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
 
+           String registrationUrl = URL.Url_Registration;
+
+
+            final RequestQueue requestQueue = Volley.newRequestQueue(RegistrationActivity.this);
+
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, registrationUrl, params, new Response.Listener<JSONObject>() {
+
+                @Override
+                public void onResponse(JSONObject response) {
+
+
+                    System.out.println(response.toString());
+
+                    try {
+                        if (response.getInt("status") == 1) {
+
+                            Toast.makeText(RegistrationActivity.this, response.getString("msg"), Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
+                            progressDialog.dismiss();
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                            finish();
+
+                        }
+                        else{
+                            Toast.makeText(RegistrationActivity.this, response.getString("msg"), Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                    Toast.makeText(RegistrationActivity.this, "Please Check Credentials", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+
+                }
+            })
+            {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    headers.put("Content-Type", "application/json");
+                    return headers;
+                }
+            };
+
+            requestQueue.add(jsonObjectRequest);
+
+
 
 
         }
     }
 
-            public void onItemSelected(AdapterView<?> parent, View view,
-                               int pos, long id) {
-        // An item was selected. You can retrieve the selected item using
-         parent.getItemAtPosition(pos);
-    }
 
-    public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
-    }
+
 }

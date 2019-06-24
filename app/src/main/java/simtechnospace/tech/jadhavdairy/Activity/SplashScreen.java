@@ -1,13 +1,11 @@
-package simtechnospace.tech.jadhavdairy;
+package simtechnospace.tech.jadhavdairy.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
-import com.crashlytics.android.Crashlytics;
-
-import io.fabric.sdk.android.Fabric;
+import simtechnospace.tech.jadhavdairy.R;
 
 public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {

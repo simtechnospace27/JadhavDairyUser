@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#dae9f6</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="normalTextColor">#000000</color>
     <color name="changeTextColor">#000000</color>
     <color name="normalButtonColor">#FF0000</color>
+    <color name="backgroundColorNormal">#FF0000</color>
+    <color name="colorNavText">#01294b</color>
+
+    <color name="backgroundColorNormalTabLayout">#EB4141</color>
+    <color name="colorPrimary1">#FFD5D5</color>
+
+
+
+
 </resources>

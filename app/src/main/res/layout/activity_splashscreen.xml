@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@color/colorPrimary"
-    tools:context="simtechnospace.tech.jadhavdairy.SplashScreen">
+    tools:context="simtechnospace.tech.jadhavdairy.Activity.SplashScreen">
 
     <ImageView
         android:id="@+id/splashScreenImage"
@@ -14,6 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/logosplash" />
+        android:src="@drawable/jadhav_dairy_logo" />
 
 </LinearLayout>
