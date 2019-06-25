@@ -395,16 +395,6 @@
                 android:text="Save"
                 android:textColor="@color/normalTextColor" />
 
-           <!-- <com.pnikosis.materialishprogress.ProgressWheel
-                android:id="@+id/progress_wheel"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:visibility="gone"
-                wheel:matProg_barColor="@color/colorAccent"
-                wheel:matProg_progressIndeterminate="true" />-->
-
 
         </LinearLayout>
     </ScrollView>

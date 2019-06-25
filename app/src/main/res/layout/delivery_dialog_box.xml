@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:orientation="vertical"
+android:layout_width="350dp"
+android:layout_height="wrap_content"
+android:background="#ffefebe9"
+android:padding="1.0dip">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:autoSizeMaxTextSize="30dp"
+            android:autoSizeMinTextSize="16dp"
+            android:padding="5dp"
+            android:text="Date"
+            android:textColor="@color/changeTextColor" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/txtDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:autoSizeMaxTextSize="30dp"
+                android:autoSizeMinTextSize="16dp"
+                android:textColorHint="@color/changeTextColor"
+                app:errorTextAppearance="@style/error_appearance"
+                app:hintTextAppearance="@color/changeTextColor">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_tDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoSizeMaxTextSize="30dp"
+                    android:autoSizeMinTextSize="16dp"
+                    android:inputType="textEmailAddress"
+                    android:padding="5dp"
+                    android:textColor="@color/changeTextColor"
+                    android:textColorHint="@color/changeTextColor" />
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:autoSizeMaxTextSize="30dp"
+            android:autoSizeMinTextSize="16dp"
+            android:padding="5dp"
+            android:text="Requirement:"
+            android:textColor="@color/changeTextColor" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/txtUserCardRequirement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:autoSizeMaxTextSize="30dp"
+                android:autoSizeMinTextSize="16dp"
+                android:textColorHint="@color/changeTextColor"
+                app:errorTextAppearance="@style/error_appearance"
+                app:hintTextAppearance="@color/changeTextColor">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_tUserCardRequirement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoSizeMaxTextSize="30dp"
+                    android:autoSizeMinTextSize="16dp"
+                    android:inputType="textEmailAddress"
+                    android:padding="5dp"
+                    android:textColor="@color/changeTextColor"
+                    android:textColorHint="@color/changeTextColor" />
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:autoSizeMaxTextSize="30dp"
+        android:autoSizeMinTextSize="16dp"
+        android:padding="5dp"
+        android:text="Delivery Status:"
+        android:textColor="@color/changeTextColor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/txtDeliveryStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:autoSizeMaxTextSize="30dp"
+            android:autoSizeMinTextSize="16dp"
+            android:textColorHint="@color/changeTextColor"
+            app:errorTextAppearance="@style/error_appearance"
+            app:hintTextAppearance="@color/changeTextColor">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_tDeliveryStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeMaxTextSize="30dp"
+                android:autoSizeMinTextSize="16dp"
+                android:inputType="textEmailAddress"
+                android:padding="5dp"
+                android:textColor="@color/changeTextColor"
+                android:textColorHint="@color/changeTextColor" />
+
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:layout_weight="1"
+        android:id="@+id/btnOK"
+        android:background="#FF0000"/>
+
+  </LinearLayout>
