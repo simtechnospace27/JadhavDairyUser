@@ -37,6 +37,7 @@ public class ProfileFragment extends Fragment {
     android.support.design.widget.TextInputLayout mTextInputLayoutUserName,mTextInputLayoutOldPassword,mTextInputLayoutNewPassword, mTextInputLayoutUnit,mTextInputLayoutUserEmail, mTextInputLayoutUserAddress, mTextInputLayoutUserMobileNo,mTextInputLayoutRequirement;
     android.support.design.widget.TextInputEditText mEdtUserName,mEdtUserEmail, mEdtUserAddress, mEdtUserRequirement, mEdtUserMobileNo,mEdtUserOldPassword,mEdtUserNewPassword;
     Button mBtnSave;
+    String mUnitChange;
 
 
     @Override
@@ -94,21 +95,25 @@ public class ProfileFragment extends Fragment {
 
         if(UserDetails.getUnit().equalsIgnoreCase("Ltr")) {
             spin.setSelection(1);
+            mUnitChange = spin.getSelectedItem().toString();
         }
         else if(UserDetails.getUnit().equalsIgnoreCase("ml")) {
             spin.setSelection(2);
+            mUnitChange = spin.getSelectedItem().toString();
         }
         else{
             spin.setSelection(0);
+            mUnitChange = spin.getSelectedItem().toString();
         }
 
-        final String mUnitChange = spin.getSelectedItem().toString();
+
         mBtnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String UpdateUrl = URL.mUpdateUrl;
 
                 final RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+                mUnitChange = spin.getSelectedItem().toString();
 
                 JSONObject params = new JSONObject();
                 try {

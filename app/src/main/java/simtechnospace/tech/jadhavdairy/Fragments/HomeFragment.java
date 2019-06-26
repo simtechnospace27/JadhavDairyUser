@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import simtechnospace.tech.jadhavdairy.Activity.HomeActivity;
+import simtechnospace.tech.jadhavdairy.Dialogs.CustomAlertDialog;
 import simtechnospace.tech.jadhavdairy.R;
 import simtechnospace.tech.jadhavdairy.pojo_class.URL;
 import simtechnospace.tech.jadhavdairy.pojo_class.UserCredentialsAfterLogin;
@@ -114,7 +115,8 @@ public class HomeFragment extends Fragment {
 
                         UserDetails userDetails = new UserDetails(mUserAddress, mRequirements, mUnit, mDeliveryBoy, mApprovalStatus, mCustomerName, mMobileNo, mEmailId, mUserJoinDate);
 
-                        mTextViewUserRequirements.setText(mRequirements);
+                        mTextViewUserRequirements.setText(mRequirements+" "+mUnit);
+
 
                         if (mApprovalStatus.equalsIgnoreCase("Not Approved By Admin"))
                         {
@@ -140,7 +142,7 @@ public class HomeFragment extends Fragment {
 
                         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                         String strDate= formatter.format(tomorrow);
-                        //System.out.println(strDate);
+
 
                         Date d = formatter.parse(strDate);
                         long milliseconds = d.getTime();
@@ -158,6 +160,11 @@ public class HomeFragment extends Fragment {
                         mCalenderviewUserDetails.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                             @Override
                             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+
+                                String date = year+"-"+(month+1)+"-"+dayOfMonth;
+
+                                CustomAlertDialog customAlertDialog = new CustomAlertDialog(getActivity(),date, mRequirements+" "+mUnit, "delivered");
+                                customAlertDialog.show();
 
 
                             }
