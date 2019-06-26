@@ -88,13 +88,44 @@ android:padding="1.0dip">
                     android:layout_height="wrap_content"
                     android:autoSizeMaxTextSize="30dp"
                     android:autoSizeMinTextSize="16dp"
-                    android:inputType="textEmailAddress"
+                    android:hint="Enter Requirement"
                     android:padding="5dp"
                     android:textColor="@color/changeTextColor"
                     android:textColorHint="@color/changeTextColor" />
 
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/txtUnit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:autoSizeMaxTextSize="30dp"
+            android:autoSizeMinTextSize="16dp"
+            android:textColorHint="@color/changeTextColor"
+            app:errorTextAppearance="@style/error_appearance"
+            app:hintTextAppearance="@color/changeTextColor">
+
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner2"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
 
 
     <TextView

@@ -163,7 +163,7 @@ public class HomeFragment extends Fragment {
 
                                 String date = year+"-"+(month+1)+"-"+dayOfMonth;
 
-                                CustomAlertDialog customAlertDialog = new CustomAlertDialog(getActivity(),date, mRequirements+" "+mUnit, "delivered");
+                                CustomAlertDialog customAlertDialog = new CustomAlertDialog(getActivity(),date, mEmailId);
                                 customAlertDialog.show();
 
 
