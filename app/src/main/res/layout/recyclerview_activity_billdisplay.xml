@@ -1,29 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <TableRow
+<LinearLayout android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_width="fill_parent">
+        android:orientation="horizontal">
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtserialno"
-            android:layout_column="1"/>
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="12dp"
+            android:gravity="center"
+            android:id="@+id/srnoDisplay"
+            android:textColor="@color/changeTextColor" />
+
+
+        <View
+            android:layout_height="match_parent"
+            android:layout_width="2dp"
+            android:background="#c0c0c0"/>
+
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtrequirementcolumn"
-            android:layout_column="2"/>
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:textSize="12dp"
+            android:gravity="center"
+            android:id="@+id/requirementDisplay"
+            android:textColor="@color/changeTextColor" />
+
+        <View
+            android:layout_height="match_parent"
+            android:layout_width="2dp"
+            android:background="#c0c0c0"/>
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtdaysdelivered"
-            android:layout_column="3"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:textSize="12dp"
+            android:gravity="center"
+            android:id="@+id/daysDisplay"
+            android:textColor="@color/changeTextColor" />
+
+        <View
+            android:layout_height="match_parent"
+            android:layout_width="2dp"
+            android:background="#c0c0c0"/>
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtbillCalculated"
-            android:layout_column="4"/>
-    </TableRow>
-</TableLayout>
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="12dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/edtTotalBillDisplay"
+            android:textColor="@color/changeTextColor" />
+    </LinearLayout>
+
+    <View
+        android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:background="#c0c0c0"/>
+</LinearLayout>

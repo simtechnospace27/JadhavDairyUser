@@ -14,5 +14,9 @@ public class URL {
 
     public static String mUpdateDailyDetails = "http://thegoviddo.tech/admin/updatedailyrequrements.php";
 
+    public static String mGetBillDetailsUrl = "http://thegoviddo.tech/admin/billdetails.php";
+
+    public static String mGetBillPaidDataSaveUrl = "http://thegoviddo.tech/admin/billpaid.php";
+
 }
 
