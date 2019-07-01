@@ -2,6 +2,7 @@ package simtechnospace.tech.jadhavdairy.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -43,6 +44,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import simtechnospace.tech.jadhavdairy.Activity.HomeActivity;
 import simtechnospace.tech.jadhavdairy.Adapters.BillDetailsAdapter;
 import simtechnospace.tech.jadhavdairy.Dialogs.CustomAlertDialog;
 import simtechnospace.tech.jadhavdairy.R;
@@ -291,7 +293,7 @@ public class BillDetailsFragment extends Fragment {
                String amount = "2";
                 String note = "Bill Payment";
                 String name = "Imran Gulab Mulani";
-                String upiId = "8600955821@upi";
+                String upiId = "9881533090@upi";
 
                 payUsingUpi(amount, upiId, name, note);
 
@@ -308,7 +310,7 @@ public class BillDetailsFragment extends Fragment {
                 String amount = "2";
                 String note = "Bill Payment";
                 String name = "Imran Gulab Mulani";
-                String upiId = "8600955821@upi";
+                String upiId = "9881533090@upi";
 
                 payUsingUpiBheem(amount, upiId, name, note);
 
@@ -343,6 +345,13 @@ public class BillDetailsFragment extends Fragment {
         intent.setData(uri);
         intent.setPackage("com.google.android.apps.nbu.paisa.user");
 
+        if(isPackageInstalled("com.google.android.apps.nbu.paisa.user", getActivity().getPackageManager()))
+        {
+            startActivityForResult(intent, UPI_PAYMENT);
+        }
+        else{
+            Toast.makeText(getActivity(), "UPI App is Not Installed, Please instal first", Toast.LENGTH_SHORT).show();
+        }
 
         // check if intent resolves
 //        if(null != chooser.resolveActivity(getActivity().getPackageManager())) {
@@ -352,7 +361,6 @@ public class BillDetailsFragment extends Fragment {
 //            Toast.makeText(getActivity(),"No UPI app found, please install one to continue",Toast.LENGTH_SHORT).show();
 //        }
 
-        startActivityForResult(intent, UPI_PAYMENT);
 
     }
 
@@ -382,6 +390,15 @@ public class BillDetailsFragment extends Fragment {
         intent.setPackage("in.org.npci.upiapp");
 
 
+        if(isPackageInstalled("in.org.npci.upiapp", getActivity().getPackageManager()))
+        {
+            startActivityForResult(intent, UPI_PAYMENT);
+        }
+        else{
+            Toast.makeText(getActivity(), "UPI App is Not Installed, Please instal first", Toast.LENGTH_SHORT).show();
+        }
+
+
         // check if intent resolves
 //        if(null != chooser.resolveActivity(getActivity().getPackageManager())) {
 //            //System.out.println(getActivity().getPackageManager());
@@ -390,7 +407,6 @@ public class BillDetailsFragment extends Fragment {
 //            Toast.makeText(getActivity(),"No UPI app found, please install one to continue",Toast.LENGTH_SHORT).show();
 //        }
 
-        startActivityForResult(intent, UPI_PAYMENT);
 
     }
 
@@ -425,6 +441,8 @@ public class BillDetailsFragment extends Fragment {
         }
     }
 
+
+
     private void upiPaymentDataOperation(ArrayList<String> data) {
         if (isConnectionAvailable(getActivity())) {
             String str = data.get(0);
@@ -436,6 +454,7 @@ public class BillDetailsFragment extends Fragment {
             String response[] = str.split("&");
             for (int i = 0; i < response.length; i++) {
                 String equalStr[] = response[i].split("=");
+                System.out.println(equalStr[0]+" = size = "+equalStr.length);
                 if(equalStr.length >= 2) {
                     if (equalStr[0].toLowerCase().equals("Status".toLowerCase())) {
                         status = equalStr[1].toLowerCase();
@@ -443,6 +462,8 @@ public class BillDetailsFragment extends Fragment {
                     else if (equalStr[0].toLowerCase().equals("ApprovalRefNo".toLowerCase()) || equalStr[0].toLowerCase().equals("txnRef".toLowerCase())) {
                         approvalRefNo = equalStr[1];
                     }
+
+                    System.out.println("tid = "+approvalRefNo);
                 }
                 else {
                     paymentCancel = "Payment cancelled by user.";
@@ -466,6 +487,8 @@ public class BillDetailsFragment extends Fragment {
                     params.put("amount_paid", mEdtTotalPricePay.getText().toString());
                     params.put("transactionId", approvalRefNo);
 
+                    System.out.println(params.toString());
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -474,14 +497,13 @@ public class BillDetailsFragment extends Fragment {
 
 
 
-                String getUserProfileDetailsUrl = URL.mGetProfileDetailsUrl;
 
 
                 final RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 
                 h = this;
 
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, getUserProfileDetailsUrl, params, new Response.Listener<JSONObject>() {
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, saveBillPaymentStatusUrl, params, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
@@ -494,7 +516,7 @@ public class BillDetailsFragment extends Fragment {
                                 Toast.makeText(getActivity(), response.getString("msg"), Toast.LENGTH_SHORT).show();
 
 
-                                FragmentManager fragmentManager = getFragmentManager();
+                             //   FragmentManager fragmentManager = getFragmentManager();
 
 //                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 //                                    fragmentManager.beginTransaction().detach(h).commitNow();
@@ -503,6 +525,10 @@ public class BillDetailsFragment extends Fragment {
 //                                    fragmentManager.beginTransaction().detach(h).attach(h).commit();
 //                                }
 //
+
+                                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                                startActivity(intent);
+                                getActivity().finish();
 
                             }
                             else{
@@ -536,8 +562,6 @@ public class BillDetailsFragment extends Fragment {
 
 
 
-
-
             }
             else if("Payment cancelled by user.".equals(paymentCancel)) {
                 Toast.makeText(getActivity(), "Payment cancelled by user.", Toast.LENGTH_SHORT).show();
@@ -549,6 +573,7 @@ public class BillDetailsFragment extends Fragment {
             Toast.makeText(getActivity(), "Internet connection is not available. Please check and try again", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     public static boolean isConnectionAvailable(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -563,6 +588,22 @@ public class BillDetailsFragment extends Fragment {
         return false;
     }
 
+
+
+    private boolean isPackageInstalled(String packageName, PackageManager packageManager) {
+
+        boolean found = true;
+
+        try {
+
+            packageManager.getPackageInfo(packageName, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+
+            found = false;
+        }
+
+        return found;
+    }
 
 
 }
