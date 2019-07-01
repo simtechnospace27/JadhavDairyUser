@@ -290,36 +290,38 @@
 
     </android.support.v7.widget.RecyclerView>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
 
-   <ImageView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+   <ImageButton
        android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:src="@drawable/gpay"
-       android:clickable="true"
-       android:layout_margin="10dp"
-       android:layout_weight="1"/>
+       android:layout_height="80dp"
+       android:src="@drawable/buy_with_gpay"
+       android:layout_gravity="center"
+       android:scaleType="fitXY"
+       android:layout_weight="1"
+       android:id="@+id/btnPay"/>
 
 
-    <ImageView
+    <ImageButton
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:src="@drawable/bhim"
-        android:layout_margin="10dp"
-        android:clickable="true"
-        android:layout_weight="1"/>
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:layout_weight="1"
+        android:id="@+id/btnPay1"/>
 
-
+        </LinearLayout>
 
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edtTotalPricePay"
             android:visibility="invisible"/>
-</LinearLayout>
 
 
     </LinearLayout>

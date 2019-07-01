@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,7 +64,7 @@ public class BillDetailsFragment extends Fragment {
     BillDetailsAdapter mBillDetailsAdapter;
     ArrayList<BillDetails> mBillDetailsArrayList;
 
-    Button mBtnProceedToPay, mBtnProoceedToPayBheem;
+    ImageButton mBtnProceedToPay, mBtnProoceedToPayBheem;
 
     CardView cardView;
 
