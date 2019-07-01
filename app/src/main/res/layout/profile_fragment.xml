@@ -393,7 +393,7 @@
                 android:autoSizeMinTextSize="16dp"
                 android:background="@color/normalButtonColor"
                 android:text="Save"
-                android:textColor="@color/normalTextColor" />
+                android:textColor="#ffffff" />
 
 
         </LinearLayout>
