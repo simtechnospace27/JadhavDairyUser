@@ -5,10 +5,11 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="normalTextColor">#000000</color>
-    <color name="changeTextColor">#7E8DE2  </color>
+    <color name="changeTextColor">#000000  </color>
     <color name="normalButtonColor">#3144AE  </color>
     <color name="backgroundColorNormal">#FF0000</color>
     <color name="colorNavText">#01294b</color>
+    <color name="PressButtonColor">#7E8DE2</color>
 
     <color name="backgroundColorNormalTabLayout">#7E8DE2  </color>
     <color name="colorPrimary1">#FFD5D5</color>

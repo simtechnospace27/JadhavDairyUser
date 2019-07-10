@@ -69,6 +69,7 @@ public class HomeFragment extends Fragment {
 
         mCalenderviewUserDetails = view.findViewById(R.id.userDeliveryStatusCalender);
 
+
         JSONObject params = new JSONObject();
         try {
 
@@ -173,7 +174,7 @@ public class HomeFragment extends Fragment {
 
                     }
                     else{
-                        Toast.makeText(getActivity(), response.getString("msg"), Toast.LENGTH_SHORT).show();
+                         Toast.makeText(getActivity(), response.getString("msg"), Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

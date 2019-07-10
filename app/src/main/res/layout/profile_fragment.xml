@@ -391,7 +391,7 @@
                 android:layout_marginBottom="10dp"
                 android:autoSizeMaxTextSize="30dp"
                 android:autoSizeMinTextSize="16dp"
-                android:background="@color/normalButtonColor"
+                android:background="@drawable/button"
                 android:text="Save"
                 android:textColor="#ffffff" />
 
