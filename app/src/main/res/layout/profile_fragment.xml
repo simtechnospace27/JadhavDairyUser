@@ -45,7 +45,7 @@
                 android:autoSizeMaxTextSize="30dp"
                 android:autoSizeMinTextSize="16dp"
                 android:padding="5dp"
-                android:text=" User Name"
+                android:text="@string/field_mandatory"
                 android:textColor="@color/changeTextColor" />
 
             <LinearLayout
@@ -90,7 +90,7 @@
                 android:autoSizeMaxTextSize="30dp"
                 android:autoSizeMinTextSize="16dp"
                 android:padding="5dp"
-                android:text="Email"
+                android:text="@string/email"
                 android:textColor="@color/changeTextColor" />
 
             <LinearLayout
@@ -125,6 +125,9 @@
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
+
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -134,7 +137,151 @@
                 android:autoSizeMaxTextSize="30dp"
                 android:autoSizeMinTextSize="16dp"
                 android:padding="5dp"
-                android:text="Address"
+                android:text="@string/Society_name"
+                android:textColor="@color/changeTextColor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputLayoutSocietyName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:autoSizeMaxTextSize="30dp"
+                    android:autoSizeMinTextSize="16dp"
+                    android:textColorHint="@color/changeTextColor"
+                    app:errorTextAppearance="@style/error_appearance"
+                    app:hintTextAppearance="@color/changeTextColor">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edtUserSocietyName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autoSizeMaxTextSize="30dp"
+                        android:autoSizeMinTextSize="16dp"
+                        android:inputType="text"
+                        android:padding="5dp"
+                        android:textColor="@color/changeTextColor"
+                        android:textColorHint="@color/changeTextColor" />
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:autoSizeMaxTextSize="30dp"
+                android:autoSizeMinTextSize="16dp"
+                android:padding="5dp"
+                android:text="@string/Wing_name"
+                android:textColor="@color/changeTextColor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputLayoutWingName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:autoSizeMaxTextSize="30dp"
+                    android:autoSizeMinTextSize="16dp"
+                    android:textColorHint="@color/changeTextColor"
+                    app:errorTextAppearance="@style/error_appearance"
+                    app:hintTextAppearance="@color/changeTextColor">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edtUserWingName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autoSizeMaxTextSize="30dp"
+                        android:autoSizeMinTextSize="16dp"
+                        android:inputType="text"
+                        android:padding="5dp"
+                        android:textColor="@color/changeTextColor"
+                        android:textColorHint="@color/changeTextColor" />
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:autoSizeMaxTextSize="30dp"
+                android:autoSizeMinTextSize="16dp"
+                android:padding="5dp"
+                android:text="@string/Flatno"
+                android:textColor="@color/changeTextColor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputLayoutFlatNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:autoSizeMaxTextSize="30dp"
+                    android:autoSizeMinTextSize="16dp"
+                    android:textColorHint="@color/changeTextColor"
+                    app:errorTextAppearance="@style/error_appearance"
+                    app:hintTextAppearance="@color/changeTextColor">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edtFlatNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autoSizeMaxTextSize="30dp"
+                        android:autoSizeMinTextSize="16dp"
+                        android:inputType="text"
+                        android:padding="5dp"
+                        android:textColor="@color/changeTextColor"
+                        android:textColorHint="@color/changeTextColor" />
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:autoSizeMaxTextSize="30dp"
+                android:autoSizeMinTextSize="16dp"
+                android:padding="5dp"
+                android:text="@string/Address"
                 android:textColor="@color/changeTextColor" />
 
             <LinearLayout
@@ -179,7 +326,7 @@
                 android:autoSizeMaxTextSize="30dp"
                 android:autoSizeMinTextSize="16dp"
                 android:padding="5dp"
-                android:text="Mobile No."
+                android:text="@string/mobile"
                 android:textColor="@color/changeTextColor" />
 
             <LinearLayout
@@ -216,6 +363,7 @@
 
 
 
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -225,7 +373,49 @@
                 android:autoSizeMaxTextSize="30dp"
                 android:autoSizeMinTextSize="16dp"
                 android:padding="5dp"
-                android:text="Your Daily Requirement"
+                android:text="@string/milktype"
+                android:textColor="@color/changeTextColor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputLayoutMilkType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:autoSizeMaxTextSize="30dp"
+                    android:autoSizeMinTextSize="16dp"
+                    android:textColorHint="@color/changeTextColor"
+                    app:errorTextAppearance="@style/error_appearance"
+                    app:hintTextAppearance="@color/changeTextColor">
+
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/spinnerMilkType"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:autoSizeMaxTextSize="30dp"
+                android:autoSizeMinTextSize="16dp"
+                android:padding="5dp"
+                android:text="@string/requirement"
                 android:textColor="@color/changeTextColor" />
 
 
@@ -291,7 +481,124 @@
 
             </LinearLayout>
 
-                <TextView
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:autoSizeMaxTextSize="30dp"
+                android:autoSizeMinTextSize="16dp"
+                android:padding="5dp"
+                android:text="Milk Type"
+                android:textColor="@color/changeTextColor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputLayoutAddnMilkType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:autoSizeMaxTextSize="30dp"
+                    android:autoSizeMinTextSize="16dp"
+                    android:textColorHint="@color/changeTextColor"
+                    app:errorTextAppearance="@style/error_appearance"
+                    app:hintTextAppearance="@color/changeTextColor">
+
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/spinnerAddnMilkType"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:autoSizeMaxTextSize="30dp"
+                android:autoSizeMinTextSize="16dp"
+                android:padding="5dp"
+                android:text="Your Daily Requirement"
+                android:textColor="@color/changeTextColor" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/txtAddnRequirement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:autoSizeMaxTextSize="30dp"
+                    android:autoSizeMinTextSize="16dp"
+                    android:textColorHint="@color/changeTextColor"
+                    app:errorTextAppearance="@style/error_appearance"
+                    app:hintTextAppearance="@color/changeTextColor">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edit_tUserAddnRequirement"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autoSizeMaxTextSize="30dp"
+                        android:autoSizeMinTextSize="16dp"
+                        android:inputType="numberDecimal"
+                        android:padding="5dp"
+                        android:textColor="@color/changeTextColor"
+                        android:textColorHint="@color/changeTextColor" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/txtAddnUnit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:autoSizeMaxTextSize="30dp"
+                    android:autoSizeMinTextSize="16dp"
+                    android:textColorHint="@color/changeTextColor"
+                    app:errorTextAppearance="@style/error_appearance"
+                    app:hintTextAppearance="@color/changeTextColor">
+
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/spinnerAddn2"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <TextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_marginLeft="10dp"

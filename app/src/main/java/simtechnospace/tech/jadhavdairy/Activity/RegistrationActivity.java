@@ -11,6 +11,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,24 +36,36 @@ import simtechnospace.tech.jadhavdairy.R;
 import simtechnospace.tech.jadhavdairy.pojo_class.URL;
 
 public class RegistrationActivity extends AppCompatActivity {
-    android.support.design.widget.TextInputLayout mTextInputLayoutUserName, mTextInputLayoutUnit, mTextInputLayoutUserPassword,mTextInputLayoutUserEmail, mTextInputLayoutUserAddress, mTextInputLayoutUserMobileNo,mTextInputLayoutRequirement;
-    android.support.design.widget.TextInputEditText mEdtUserName, mEdtUserPassword,mEdtUserEmail, mEdtUserAddress, mEdtUserRequirement, mEdtUserMobileNo;
+    android.support.design.widget.TextInputLayout mTextInputLayoutUserName, mCheckBoXTextLayout, mTextInputLayoutUnit, mTextInputLayoutUserPassword,mTextInputLayoutUserEmail, mTextInputLayoutUserAddress, mTextInputLayoutUserMobileNo, mTextInputLayoutMilkType, mTextInputLayoutRequirement, mTextInputSocietyName, mTextInputWingName, mTextInputFlatNo;
+    android.support.design.widget.TextInputEditText mEdtUserName, mEdtUserPassword,mEdtUserEmail, mEdtUserAddress, mEdtUserRequirement, mEdtUserMobileNo, mEdtSocietyName, mEdtWingName, mEdtFlatNo;
     Button mBtnSignup;
-    String mUserName, mPassword,mUserAddress,mUserEmail,mUserMobileNo, mUnit;
+    String mUserName, mPassword,mUserAddress,mUserEmail,mUserMobileNo, mUnit, mSocietyName, mWingName, mFlatNo, mMilkType;
     Double mUserRequirement;
     Vibrator mVibrator;
+    CheckBox checkbox_terms;
+    TextView terms_link;
+
+    ArrayAdapter<String> SpinerAdapter, mMilkTypeArrayAdapter;
 
     TextView mTextViewNewUserRegistration;
     ProgressWheel mProgressWheelPreview;
     ProgressDialog progressDialog;
+    String[] spinnerMilkTyepArray;
 
-    private Spinner spinner1;
+    private Spinner spinner1, mMIlkTypeSpinner;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
+
+
+        String registrationUrl1 = URL.url_milk_type;
+
+
+
 
 
         mProgressWheelPreview = findViewById(R.id.progress_wheel);
@@ -64,6 +78,30 @@ public class RegistrationActivity extends AppCompatActivity {
         mTextInputLayoutUserMobileNo = findViewById(R.id.textInputLayoutMobileNo);
         mTextInputLayoutRequirement = findViewById(R.id.textInputLayoutRequirement);
         mTextInputLayoutUnit = findViewById(R.id.textInputLayoutUnit);
+        mTextInputLayoutMilkType = findViewById(R.id.textInputLayoutMilkType);
+        mCheckBoXTextLayout = findViewById(R.id.textInputLayoutCheckBox);
+
+        checkbox_terms = findViewById(R.id.checkbox_terms);
+        terms_link = findViewById(R.id.terms_link);
+
+        terms_link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegistrationActivity.this, TermsAndCondition.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+        mEdtSocietyName = findViewById(R.id.edtUserSocietyName);
+        mEdtWingName = findViewById(R.id.edtUserWingName);
+        mEdtFlatNo = findViewById(R.id.edtFlatNo);
+
+        mTextInputFlatNo = findViewById(R.id.textInputLayoutFlatNo);
+        mTextInputWingName = findViewById(R.id.textInputLayoutWingName);
+        mTextInputSocietyName = findViewById(R.id.textInputLayoutSocietyName);
+
 
         mEdtUserEmail = findViewById(R.id.edtUserNameRegistration);
         mEdtUserPassword = findViewById(R.id.edtUserPasswordRegistration);
@@ -73,16 +111,86 @@ public class RegistrationActivity extends AppCompatActivity {
         mEdtUserRequirement = findViewById(R.id.edtUserRequirement);
 
 
-
-
         spinner1 = (Spinner) findViewById(R.id.spinner1);
+        mMIlkTypeSpinner = findViewById(R.id.spinnerMilkType);
 
-        ArrayAdapter<String> SpinerAdapter;
-        String[] arrayItems = {"Select Unit","Ltr","ml"};
+
+
+
+
+
+
+        String[] arrayItems = {"Select Unit","Ltr/kg","ml/gm"};
 
         SpinerAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item, arrayItems);
         spinner1.setAdapter(SpinerAdapter);
+
+
+        final RequestQueue requestQueue = Volley.newRequestQueue(RegistrationActivity.this);
+
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, registrationUrl1, null, new Response.Listener<JSONObject>() {
+
+
+            @Override
+            public void onResponse(JSONObject response) {
+
+
+                System.out.println(response.toString());
+
+
+
+                try {
+                    if (response.getInt("status") == 1) {
+
+                        JSONArray ja = response.getJSONArray("result");
+                        spinnerMilkTyepArray = new String[ja.length()+1];
+                        spinnerMilkTyepArray[0] = "Select Milk Type";
+
+                        for (int m =0; m<ja.length(); m++)
+                        {
+                            JSONObject jo = ja.getJSONObject(m);
+                            String name = jo.getString("name");
+                            spinnerMilkTyepArray[m+1] = name;
+
+                            mMilkTypeArrayAdapter = new ArrayAdapter<String>(RegistrationActivity.this,
+                                    android.R.layout.simple_spinner_dropdown_item, spinnerMilkTyepArray);
+                            mMIlkTypeSpinner.setAdapter(mMilkTypeArrayAdapter);
+                            mMilkTypeArrayAdapter.notifyDataSetChanged();
+
+
+                        }
+
+                    }
+                    else{
+                        Toast.makeText(RegistrationActivity.this, response.getString("msg"), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(RegistrationActivity.this, "Please Check Credentials", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+
+            }
+        })
+        {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                return headers;
+            }
+        };
+
+        requestQueue.add(jsonObjectRequest);
 
 
 
@@ -100,30 +208,39 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                mUserName = mEdtUserName.getText().toString();
-                mPassword = mEdtUserPassword.getText().toString();
-                mUserAddress = mEdtUserAddress.getText().toString();
+                if (checkbox_terms.isChecked()) {
+                    mCheckBoXTextLayout.setErrorEnabled(false);
+                    mUserName = mEdtUserName.getText().toString();
+                    mPassword = mEdtUserPassword.getText().toString();
+                    mUserAddress = mEdtUserAddress.getText().toString();
+                    mFlatNo = mEdtFlatNo.getText().toString();
+                    mSocietyName = mEdtSocietyName.getText().toString();
+                    mWingName = mEdtWingName.getText().toString();
 
-                if (!mEdtUserMobileNo.getText().toString().trim().isEmpty()) {
-                    mUserMobileNo = mEdtUserMobileNo.getText().toString();
+
+                    if (!mEdtUserMobileNo.getText().toString().trim().isEmpty()) {
+                        mUserMobileNo = mEdtUserMobileNo.getText().toString();
+                    } else {
+                        mUserMobileNo = "0";
+                    }
+
+
+                    mUserEmail = mEdtUserEmail.getText().toString();
+                    if (!mEdtUserRequirement.getText().toString().isEmpty()) {
+                        mUserRequirement = Double.parseDouble(mEdtUserRequirement.getText().toString());
+                    } else {
+                        mUserRequirement = 0.0;
+                    }
+                    mUnit = spinner1.getSelectedItem().toString();
+
+                    mMilkType = mMIlkTypeSpinner.getSelectedItem().toString();
+
+                    submitForm(mUserEmail, mPassword, mUserName, mUserAddress, mUserMobileNo, mUserRequirement, mUnit, mFlatNo, mSocietyName, mWingName, mMilkType);
                 }
                 else{
-                    mUserMobileNo = "0";
+                    mCheckBoXTextLayout.setErrorEnabled(true);
+                    mCheckBoXTextLayout.setError("Please Agree Terms And Condition First");
                 }
-
-
-                mUserEmail = mEdtUserEmail.getText().toString();
-                if (!mEdtUserRequirement.getText().toString().isEmpty()) {
-                    mUserRequirement = Double.parseDouble(mEdtUserRequirement.getText().toString());
-                }
-                else{
-                    mUserRequirement = 0.0;
-                }
-                mUnit = spinner1.getSelectedItem().toString();
-
-                Toast.makeText(RegistrationActivity.this, mUnit, Toast.LENGTH_SHORT).show();
-
-                submitForm(mUserEmail,mPassword,mUserName,mUserAddress,mUserMobileNo,mUserRequirement, mUnit);
             }
 
         });
@@ -142,6 +259,34 @@ public class RegistrationActivity extends AppCompatActivity {
             return false;
         }
         mTextInputLayoutUserName.setErrorEnabled( false );
+        return true;
+    }
+
+
+    private boolean checkSocietyName(String userName) {
+
+        userName = userName.trim();
+
+        if(userName.trim().isEmpty() || (userName.length() <= 1)){
+            mTextInputSocietyName.setErrorEnabled( true );
+            mTextInputSocietyName.setError( "Please Enter Valid Society Name" );
+            return false;
+        }
+        mTextInputSocietyName.setErrorEnabled( false );
+        return true;
+    }
+
+
+    private boolean checkFlatNo(String userName) {
+
+        userName = userName.trim();
+
+        if(userName.trim().isEmpty()){
+            mTextInputFlatNo.setErrorEnabled( true );
+            mTextInputFlatNo.setError( "Please Enter Valid Flat No" );
+            return false;
+        }
+        mTextInputFlatNo.setErrorEnabled( false );
         return true;
     }
 
@@ -216,6 +361,19 @@ public class RegistrationActivity extends AppCompatActivity {
         return true;
     }
 
+    private boolean checkMilkType(String milkType)
+    {
+        if(milkType.trim().equalsIgnoreCase("Select Milk Type"))
+        {
+            mTextInputLayoutMilkType.setErrorEnabled(true);
+            mTextInputLayoutMilkType.setError("Please Select Milk Type First");
+            return false;
+        }
+        mTextInputLayoutMilkType.setErrorEnabled(false);
+        return true;
+    }
+
+
     private boolean checkMobile(String mobileNo) {
         if (mobileNo.length() == 10) {
             mTextInputLayoutUserMobileNo.setErrorEnabled(false);
@@ -229,7 +387,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
 
-    public void submitForm(String Email,String password,String username,String Address, String mobileNo, double Requirement, String unit) {
+    public void submitForm(String Email,String password,String username,String Address, String mobileNo, double Requirement, String unit, String flatNo, String mSocietyName, String wingName, String mMilkType) {
 
         if (!checkFirstName(username)) {
             mVibrator.vibrate(1000);
@@ -246,6 +404,18 @@ public class RegistrationActivity extends AppCompatActivity {
             return;
 
         }
+        else if (!checkSocietyName(mSocietyName)) {
+            mVibrator.vibrate(1000);
+            mEdtSocietyName.requestFocus();
+            return;
+
+        }
+        else if (!checkFlatNo(flatNo)) {
+            mVibrator.vibrate(1000);
+            mEdtFlatNo.requestFocus();
+            return;
+
+        }
         else if (!checkAddress(Address)) {
             mVibrator.vibrate(1000);
             mEdtUserAddress.requestFocus();
@@ -256,7 +426,13 @@ public class RegistrationActivity extends AppCompatActivity {
             mEdtUserMobileNo.requestFocus();
             return;
 
-        }  else if (!checkRequirement(Requirement)) {
+        }else if (!checkMilkType(mMilkType)) {
+            mVibrator.vibrate(1000);
+            mMIlkTypeSpinner.requestFocus();
+            return;
+
+        }
+        else if (!checkRequirement(Requirement)) {
             mVibrator.vibrate(1000);
             mEdtUserRequirement.requestFocus();
             return;
@@ -275,6 +451,9 @@ public class RegistrationActivity extends AppCompatActivity {
             mTextInputLayoutUserMobileNo.setErrorEnabled(false);
             mTextInputLayoutRequirement.setErrorEnabled(false);
             mTextInputLayoutUnit.setErrorEnabled(false);
+            mTextInputSocietyName.setErrorEnabled(false);
+            mTextInputFlatNo.setErrorEnabled(false);
+            mTextInputLayoutMilkType.setErrorEnabled(false);
 
             progressDialog.show();
             JSONObject params = new JSONObject();
@@ -287,6 +466,10 @@ public class RegistrationActivity extends AppCompatActivity {
                 params.put("unit", mUnit);
                 params.put("email", Email);
                 params.put("paasword", password);
+                params.put("socname", mSocietyName);
+                params.put("flat", flatNo);
+                params.put("wing", wingName);
+                params.put("milktype", mMilkType);
 
 
             } catch (JSONException e) {

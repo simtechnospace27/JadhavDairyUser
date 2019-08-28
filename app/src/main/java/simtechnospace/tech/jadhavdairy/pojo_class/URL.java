@@ -18,5 +18,7 @@ public class URL {
 
     public static String mGetBillPaidDataSaveUrl = "http://thegoviddo.tech/admin/billpaid.php";
 
+    public static String url_milk_type = "http://thegoviddo.tech/admin/milk_type.php";
+
 }
 

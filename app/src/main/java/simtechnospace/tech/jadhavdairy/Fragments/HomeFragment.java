@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
 
     UserCredentialsAfterLogin userCredentialsAfterLogin;
 
-    String mUserAddress, mRequirements, mUnit, mDeliveryBoy, mApprovalStatus, mCustomerName, mMobileNo, mEmailId, mUserJoinDate;
+    String mUserAddress, mRequirements, mUnit, mDeliveryBoy, mApprovalStatus, mCustomerName, mMobileNo, mEmailId, mUserJoinDate, mMilkType,mAddnRequirement, mAddnUnit, mAddnMilkType, mSocietyName, mWingName, mFlatNo;
 
     TextView mTextViewUserRequirements, mTextViewApprovalSTatusMsg, mTextViewDeliveryBoyName;
     CardView mCardViewCalender;
@@ -113,8 +113,19 @@ public class HomeFragment extends Fragment {
                         mMobileNo = response.getString("mbl_no");
                         mEmailId = response.getString("email");
                         mUserJoinDate = response.getString("join_date");
+                        mSocietyName = response.getString("socname");
+                        mWingName = response.getString("wingname");
+                        mFlatNo = response.getString("flatno");
 
-                        UserDetails userDetails = new UserDetails(mUserAddress, mRequirements, mUnit, mDeliveryBoy, mApprovalStatus, mCustomerName, mMobileNo, mEmailId, mUserJoinDate);
+
+
+                        mMilkType = response.getString("milktype");
+
+                        mAddnMilkType = response.getString("additinalmilktype");
+                        mAddnRequirement = response.getString("additionalreq");
+                        mAddnUnit = response.getString("additionalunit");
+
+                        UserDetails userDetails = new UserDetails(mUserAddress, mRequirements, mUnit, mDeliveryBoy, mApprovalStatus, mCustomerName, mMobileNo, mEmailId, mUserJoinDate, mMilkType, mAddnRequirement, mAddnUnit, mAddnMilkType, mSocietyName, mWingName, mFlatNo);
 
                         mTextViewUserRequirements.setText(mRequirements+" "+mUnit);
 

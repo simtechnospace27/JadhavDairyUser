@@ -1,6 +1,33 @@
 <resources>
     <string name="app_name">Jadhav Dairy</string>
     <string name="new_register"><u>New Member? Sign up now.</u></string>
+    <string name="field_mandatory">User Name <font color ="#ff0000">*</font></string>
+    <string name="email">Email <font color ="#ff0000">*</font></string>
+    <string name="Society_name">Society Name <font color ="#ff0000">*</font></string>
+    <string name="Wing_name">Wing Name <font color ="#ff0000">*</font></string>
+    <string name="Flatno">Flat No <font color ="#ff0000">*</font></string>
+    <string name="Address">Address <font color ="#ff0000">*</font></string>
+    <string name="mobile">Mobile No.  <font color ="#ff0000">*</font></string>
+    <string name="milktype">Milk Type <font color ="#ff0000">*</font></string>
+    <string name="requirement">Your Daily Requirement <font color ="#ff0000">*</font></string>
+    <string name="unit">Select Unit <font color ="#ff0000">*</font></string>
+
+    <string name="terms_link"><u>Terms and Condition</u></string>
+
+    <string name="terms_title">Terms and Condition</string>
+    <string name="terms_title_marathi">नियम व अटी</string>
+
+    <string name="term1">1. we will keep milk in front of your door early in the morning</string>
+    <string name="term1_marathi">1. आम्ही सकाळी तुमच्या दारासमोर दूध ठेवतो</string>
+
+    <string name="term2">2. collection of milk carefully is customers responsibility, if you lost it then we are not responsible for that</string>
+    <string name="term2_marathi">2. काळजीपूर्वक दूध संकलन करणे ही ग्राहकांची जबाबदारी आहे, जर आपण ते गमावले तर आम्ही त्यासाठी जबाबदार नाही</string>
+
+    <string name="term3">3. pay the bill before 10th every months otherwise you need to pay late payment charges 100 Rs.</string>
+    <string name="term3_marathi">3. दर महिन्याला 10 तारखेपूर्वी बिल भरा अन्यथा तुम्हाला उशीरा पेमेंट शुल्क 100 रुपये द्यावे लागेल.</string>
+
+    <string name="term4">4. if you want to change or updation in milk delivery then you need to update in the app before 1day and before 8pm,  otherwise dairy will deliver your regular milk quantity and dairy is not responsible for that</string>
+    <string name="term4_marathi">4. आपल्याला दुध वितरणात बदल करायचे असल्यास किंवा अद्ययावत करायचे असल्यास आपल्याला 1 दिवसाआधी आणि संध्याकाळी 8 वाजेच्या आधी अॅपमध्ये अद्यतनित करणे आवश्यक आहे, अन्यथा दुग्धशाळा आपल्या नियमित दुधाचे वितरण करेल आणि यासाठी डेअरी जबाबदार नाही</string>
 
 
 </resources>
